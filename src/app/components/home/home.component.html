@@ -1,0 +1,49 @@
+<div class="row mt-5">
+  <div class="col-md-6">
+    <h3>Add Users</h3>
+    <form>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+        />
+        <small id="emailHelp" class="form-text text-muted"
+          >We'll never share your email with anyone else.</small
+        >
+      </div>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" />
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="staff" />
+        <label class="form-check-label" for="staff">Staff</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  <div class="col-md-6">
+    <h3>My Users</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Link</th>
+          <th scope="col">Username</th>
+          <th scope="col">Email</th>
+          <th scope="col">Staff</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"><a href="#">View</a></th>
+          <td>Starford</td>
+          <td>starford.omwakwe@moringaschool.com</td>
+          <td>True</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
