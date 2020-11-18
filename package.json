@@ -21,7 +21,10 @@
     "@angular/platform-browser-dynamic": "~11.0.0",
     "@angular/router": "~11.0.0",
     "@ng-bootstrap/ng-bootstrap": "^8.0.0",
+    "@types/jwt-decode": "^3.1.0",
     "bootstrap": "^4.5.0",
+    "jwt-decode": "^3.1.2",
+    "moment": "^2.29.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
