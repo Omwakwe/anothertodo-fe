@@ -14,16 +14,29 @@ export class AuthServiceService {
   constructor(private http: HttpClient) {}
 
   private setSession(authResult) {
+    console.log({ authResult });
+
     const token = authResult.access;
+    // const refresh = authResult.refresh;
     const payload = <JWTPayload>jwtDecode(token);
     const expiresAt = moment.unix(payload.exp);
 
-    localStorage.setItem('token', authResult.access);
-    localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
+    if (authResult.hasOwnProperty('refresh')) {
+      localStorage.setItem('token', authResult.access);
+      localStorage.setItem('refresh', authResult.refresh);
+      localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
+    } else {
+      localStorage.setItem('token', authResult.access);
+      localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
+    }
   }
 
   get token(): string {
     return localStorage.getItem('token');
+  }
+
+  get refresh(): string {
+    return localStorage.getItem('refresh');
   }
 
   login(username: string, password: string) {
@@ -40,7 +53,28 @@ export class AuthServiceService {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('refresh');
     localStorage.removeItem('expires_at');
+  }
+
+  refreshToken() {
+    if (
+      moment().isBetween(
+        this.getExpiration().subtract(1, 'days'),
+        this.getExpiration()
+      )
+    ) {
+      return this.http
+        .post(this.apiRoot.concat('token/refresh/'), { refresh: this.refresh })
+        .pipe(
+          tap((response) => {
+            console.log('refreshToken response ', response);
+            this.setSession(response);
+          }),
+          shareReplay()
+        )
+        .subscribe();
+    }
   }
 
   getExpiration() {
