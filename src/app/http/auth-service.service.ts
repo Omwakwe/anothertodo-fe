@@ -9,7 +9,7 @@ import { tap, shareReplay } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthServiceService {
-  private apiRoot = 'hhttps://anothertodo.herokuapp.com/api/';
+  private apiRoot = 'https://anothertodo.herokuapp.com/api/';
 
   constructor(private http: HttpClient) {}
 
