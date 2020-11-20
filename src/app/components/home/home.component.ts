@@ -10,7 +10,11 @@ export class HomeComponent implements OnInit {
   users: User[];
 
   getUsers(): void {
-    this.users = this.homeService.getUsers();
+    // this.users = this.homeService.getUsers();
+    this.homeService.getUsers().subscribe((data: User[]) => {
+      this.users = data;
+      console.log('this.users', this.users);
+    });
   }
 
   constructor(private homeService: HomeService) {}

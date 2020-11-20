@@ -37,11 +37,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row"><a href="#">View</a></th>
-          <td>Starford</td>
-          <td>starford.omwakwe@moringaschool.com</td>
-          <td>True</td>
+        <tr *ngFor="let user of users; index as i">
+          <th scope="row"><a routerLink="/user/{{ i }}">View</a></th>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.is_staff }}</td>
         </tr>
       </tbody>
     </table>
