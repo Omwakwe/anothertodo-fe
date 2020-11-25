@@ -8,7 +8,7 @@ import { User } from '../models/user';
   providedIn: 'root',
 })
 export class HomeService {
-  private apiRoot = 'https://anothertodo.herokuapp.com/users/';
+  private apiRoot = 'https://anothertodo.herokuapp.com/api/users/';
 
   constructor(private http: HttpClient) {}
 
