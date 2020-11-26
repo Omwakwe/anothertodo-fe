@@ -12,16 +12,6 @@ export class HomeService {
 
   constructor(private http: HttpClient) {}
 
-  // getUsers(): User[] {
-  //   return [
-  //     {
-  //       link: 'https://anothertodo.herokuapp.com/users/2/',
-  //       username: 'starford',
-  //       email: 'starford.omwakwe@moringaschool.com',
-  //       is_staff: true,
-  //     },
-  //   ];
-  // }
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       // TODO: send the error to remote logging infrastructure
@@ -37,7 +27,9 @@ export class HomeService {
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.apiRoot).pipe(
-      tap((_) => console.log('fetched users')),
+      tap((_) => {
+        console.log('fetched users');
+      }),
       catchError(this.handleError<User[]>('geUsers', []))
     );
   }

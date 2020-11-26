@@ -13,10 +13,28 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { TodosComponent } from './components/todos/todos.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, TopNavComponent, LoginComponent, UserDetailsComponent, HighlightDirective, TodosComponent],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    TopNavComponent,
+    LoginComponent,
+    UserDetailsComponent,
+    HighlightDirective,
+    TodosComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+  ],
   providers: [
     AuthGuard,
     {

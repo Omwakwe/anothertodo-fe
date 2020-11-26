@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { HomeService } from '../../http/home.service';
 import { User } from '../../models/user';
 @Component({
@@ -17,9 +18,17 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  constructor(private homeService: HomeService) {}
+  showSuccess() {
+    this.toastr.success('Hello world!', 'Toastr fun!');
+  }
+
+  constructor(
+    private homeService: HomeService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit() {
     this.getUsers();
+    // this.showSuccess();
   }
 }

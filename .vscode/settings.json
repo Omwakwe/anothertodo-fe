@@ -1,3 +1,5 @@
 {
-    "git.autofetchPeriod": 3600
+    "git.autofetchPeriod": 3600,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

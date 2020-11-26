@@ -1,1 +1,50 @@
-<p>todos works!</p>
+<div class="row mt-5">
+  <div class="col-md-6">
+    <h3>Add Todo</h3>
+    <form>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+        />
+        <small id="emailHelp" class="form-text text-muted"
+          >We'll never share your email with anyone else.</small
+        >
+      </div>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" />
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="staff" />
+        <label class="form-check-label" for="staff">Staff</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  <div class="col-md-6">
+    <h3>My Todos</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Done</th>
+          <th scope="col">Owner</th>
+          <th scope="col">date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let todo of todos; index as i">
+          <!-- <th scope="row"><a routerLink="/user/{{ i }}">View</a></th> -->
+          <td>{{ todo.title }}</td>
+          <td>{{ todo.done }}</td>
+          <td>{{ todo.owner }}</td>
+          <td>{{ todo.date_added }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
