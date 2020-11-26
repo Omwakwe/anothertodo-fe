@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { tap, catchError } from 'rxjs/operators';
+import { tap, catchError, shareReplay } from 'rxjs/operators';
 import { Todo } from 'src/app/models/todo/todo';
 
 @Injectable({
@@ -24,6 +24,26 @@ export class TodoService {
       return of(result as T);
     };
   }
+
+  createTodo(title: string, owner: number, done: any) {
+    return this.http.post(this.apiRoot, { title, owner, done }).pipe(
+      tap((response) => {
+        console.log('createTodo response ', response);
+      }),
+      shareReplay()
+    );
+  }
+
+  // createTodo(title, owner, done): {
+  //   return this.http
+  //     .post(this.apiRoot, { title, owner, done })
+  //     .pipe(
+  //       tap((response) => {
+  //         console.log("createTodo response ",response);
+  //       }),
+  //       shareReplay()
+  //     );
+  // }
 
   getTodos(): Observable<Todo[]> {
     return this.http.get<Todo[]>(this.apiRoot).pipe(
