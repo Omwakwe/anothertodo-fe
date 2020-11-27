@@ -16,6 +16,7 @@ import { TodosComponent } from './components/todos/todos.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ToastrModule } from 'ngx-toastr';
     UserDetailsComponent,
     HighlightDirective,
     TodosComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,

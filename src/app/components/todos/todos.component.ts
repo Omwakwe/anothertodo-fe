@@ -38,7 +38,6 @@ export class TodosComponent implements OnInit {
 
   ngOnInit(): void {
     this.todos = this._route.snapshot.data.resolvedTodos || [];
-    // console.log('this.newtodos ', this.newtodos);
 
     // this.getTodos();
   }
