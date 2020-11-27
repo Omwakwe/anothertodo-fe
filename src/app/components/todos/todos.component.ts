@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { TodoService } from 'src/app/http/todos/todo.service';
 import { Todo } from 'src/app/models/todo/todo';
 
@@ -10,6 +11,7 @@ import { Todo } from 'src/app/models/todo/todo';
 export class TodosComponent implements OnInit {
   todos: Todo[];
   error: any;
+  newtodos: Todo[];
 
   addTodo(title: string, owner: number, done: any) {
     console.log('title, owner,done ', title, owner, done);
@@ -29,9 +31,15 @@ export class TodosComponent implements OnInit {
     });
   }
 
-  constructor(private todoService: TodoService) {}
+  constructor(
+    private todoService: TodoService,
+    private _route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.getTodos();
+    this.todos = this._route.snapshot.data.resolvedTodos || [];
+    // console.log('this.newtodos ', this.newtodos);
+
+    // this.getTodos();
   }
 }
