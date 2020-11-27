@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { LogoutService } from 'src/app/http/logout/logout.service';
 import { TodoService } from 'src/app/http/todos/todo.service';
 import { Todo } from 'src/app/models/todo/todo';
 
@@ -32,12 +33,17 @@ export class TodosComponent implements OnInit {
   }
 
   constructor(
+    public logoutService: LogoutService,
     private todoService: TodoService,
     private _route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.todos = this._route.snapshot.data.resolvedTodos || [];
+
+    // this.logoutService.currentlogoutState.subscribe((logoutData) => {
+    //   console.log('logoutData ', logoutData);
+    // });
 
     // this.getTodos();
   }

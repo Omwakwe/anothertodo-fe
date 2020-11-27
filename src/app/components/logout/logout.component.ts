@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthServiceService } from 'src/app/http/auth-service.service';
 // import { AuthServiceService } from 'src/app/http/auth-service.service';
 import { LogoutService } from 'src/app/http/logout/logout.service';
 
@@ -9,15 +10,21 @@ import { LogoutService } from 'src/app/http/logout/logout.service';
   styleUrls: ['./logout.component.css'],
 })
 export class LogoutComponent implements OnInit {
-  constructor(public logoutService: LogoutService, private router: Router) {}
+  constructor(
+    public logoutService: LogoutService,
+    private authService: AuthServiceService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.logoutService.currentlogoutState.subscribe((logoutData) => {
       console.log('logoutData ', logoutData);
+      this.authService.logout();
+      this.router.navigate(['/login']);
     });
-    this.logoutService.getLogoutState().subscribe((logoutData) => {
-      console.log('logoutData ', logoutData);
-    });
+    // this.logoutService.getLogoutState().subscribe((logoutData) => {
+    //   console.log('logoutData ', logoutData);
+    // });
   }
 
   logout(username: string, password: string) {

@@ -17,7 +17,7 @@ export class LogoutService {
 
   changeLogoutState(logout: boolean) {
     // add data to an observable
-    console.log('changeLogoutState');
+    // console.log('changeLogoutState ', logout);
     this.logoutState.next(logout);
   }
 }
