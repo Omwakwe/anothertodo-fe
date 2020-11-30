@@ -17,14 +17,13 @@ export class LogoutComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.logoutService.currentlogoutState.subscribe((logoutData) => {
-      console.log('logoutData ', logoutData);
-      this.authService.logout();
-      this.router.navigate(['/login']);
-    });
-    // this.logoutService.getLogoutState().subscribe((logoutData) => {
+    // this.logoutService.currentlogoutState.subscribe((logoutData) => {
     //   console.log('logoutData ', logoutData);
+    //   this.authService.logout();
+    //   this.router.navigate(['/login']);
     // });
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
   logout(username: string, password: string) {
