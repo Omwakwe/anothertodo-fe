@@ -23,15 +23,12 @@ export class LogoutComponent implements OnInit {
     //   this.router.navigate(['/login']);
     // });
     this.authService.logout();
+    this.logout();
     this.router.navigate(['/login']);
   }
 
-  logout(username: string, password: string) {
-    console.log('username, password ', username, password);
-
-    // this.authService.logout();
-    // this.router.navigate(['/login']);
-    // (success) => this.router.navigate(['/login']),
-    // (error) => (alert("logout error "+error))
+  logout() {
+    console.log('logout clicked ');
+    this.logoutService.changeLogoutState(true);
   }
 }

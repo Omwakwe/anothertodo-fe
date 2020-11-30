@@ -13,13 +13,25 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-link" routerLink="/todos" routerLinkActive="active"
+      <a
+        *ngIf="loggedin"
+        class="nav-link"
+        routerLink="/todos"
+        routerLinkActive="active"
         >Todos</a
       >
-      <a class="nav-link" routerLink="/login" routerLinkActive="active"
+      <a
+        *ngIf="!loggedin"
+        class="nav-link"
+        routerLink="/login"
+        routerLinkActive="active"
         >Login</a
       >
-      <a class="nav-link" routerLink="/logout" routerLinkActive="active"
+      <a
+        *ngIf="loggedin"
+        class="nav-link"
+        routerLink="/logout"
+        routerLinkActive="active"
         >Logout</a
       >
       <!-- <button type="button" (click)="logout()" class="btn btn-primary">
